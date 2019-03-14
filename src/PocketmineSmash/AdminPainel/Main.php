@@ -60,7 +60,7 @@ class Main extends PluginBase implements Listener
     {
         $this->getLogger()->info(TE::AQUA . "AdminPainel Activado");
         $this->getServer()->getPluginManager()->registerEvents($this,$this);
-        $this->getServer()->getPluginManager()->registerEvents(new Gadgets($this));
+        new Gadgets($this);
     }
 
     public function giveGadgets(Player $player) {
