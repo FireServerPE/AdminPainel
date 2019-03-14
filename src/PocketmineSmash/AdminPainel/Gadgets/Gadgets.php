@@ -13,11 +13,13 @@ use pocketmine\level\Level;
 use pocketmine\plugin\Plugin;
 
 class Gadgets implements Listener {
+    
     public function __construct(Main $pl)
     {
         $this->pl = $pl;
-        $pl->getServer()->getPluginManager()->registerEvents($pl, $this);
+        $this->pl->getServer()->getPluginManager()->registerEvents($this, $pl);
     }
+    
     public function onKick(EntityDamageEvent $event)
     {
         if ($event instanceof EntityDamageByEntityEvent) {
