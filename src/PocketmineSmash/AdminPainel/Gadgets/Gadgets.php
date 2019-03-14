@@ -10,11 +10,13 @@ use pocketmine\inventory\PlayerInventory;
 use pocketmine\item\Item;
 use pocketmine\event\player\PlayerKickEvent;
 use pocketmine\level\Level;
+use pocketmine\plugin\Plugin;
 
 class Gadgets implements Listener {
-    public function __construct(Main $main)
+    public function __construct(Main $pl)
     {
-        $this->main = $main;
+        $this->pl = $pl;
+        $pl->getServer()->getPluginManager()->registerEvents($pl, $this);
     }
     public function onKick(EntityDamageEvent $event)
     {
@@ -23,7 +25,7 @@ class Gadgets implements Listener {
             $user = $event->getEntity();
             if ($admin instanceof Player and $user instanceof Player) {
                 if ($admin->getInventory()->getItemInHand()->getId() == 280) {
-                    $user->kick("Kicked");
+                    $user->kick("Kicked from server");
                 }
             }
         }
